@@ -1,8 +1,7 @@
 <?php
 namespace phplib;
 
-use phplib\Lib;
+use phplib\Lib as Lib;
 include "Lib.php";
 
-$nonceStr = Lib::createNonceStr();
-echo $nonceStr;
+echo Lib::generateIntergerCode();

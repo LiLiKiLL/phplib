@@ -1,6 +1,9 @@
 <?php
 namespace phplib;
 
+/**
+ * 通用函数库类
+ */
 class Lib {
     /**
      * 生成随机字符串
@@ -17,7 +20,7 @@ class Lib {
     }
 
     /**
-     * 
+     * 获取当前页面的url
      * @return [type]
      */
     public static function curPageUrl() {
@@ -33,5 +36,20 @@ class Lib {
         }
 
         return $pageURL;
+    }
+
+    /**
+     * 生成一个n位数的随机数字码
+     * @param  integer $figures 码位数
+     * @return string           码
+     */
+    public function generateIntergerCode($figures = 8) {
+        $code = '';
+        $minNum = 1;
+        $maxNum = pow(10, (int)$figures) - 1;
+        $code = mt_rand($minNum, $maxNum);
+        $code = str_pad($code, $figures, '0', STR_PAD_LEFT);// 不够8位左边补齐0
+
+        return $code;
     }
 }
