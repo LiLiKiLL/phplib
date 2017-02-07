@@ -43,7 +43,7 @@ class Lib {
      * @param  integer $figures 码位数
      * @return string           码,格式:01234567
      */
-    public function generateIntergerCode($figures = 8) {
+    public static function generateIntergerCode($figures = 8) {
         $code = '';
         $minNum = 1;
         $maxNum = pow(10, (int)$figures) - 1;
@@ -74,5 +74,43 @@ class Lib {
         }
 
         return $dateList;
+    }
+
+    /**
+     * json格式参数的字段验证，必须为json且要有必须字段
+     * @param  mixed      $param        要验证的参数
+     * @param  array $requiredKeys 必须的字段
+     * @param  integer $level 参数数组维度
+     * @return boolean
+     */
+    public static function jsonParamValidate($param, $requiredKeys = array(), $level = 1) {
+        $result = true;
+        if ($jsonParam = json_decode($param, true)) {
+            // 参数为一维数组
+            if (1 == $level) {
+                $keys = array_keys($jsonParam);
+                // 缺失的键
+                $missKeys = array_diff($requiredKeys, $keys);
+                if (! empty($missKeys)) {
+                    $result = false;
+                }
+            }
+            // 参数为二维数组
+            else if (2 == $level) {
+                foreach ($jsonParam as $k => $v) {
+                    $keys = array_keys($v);
+                    $missKeys = array_diff($requiredKeys, $keys);
+                    if (! empty($missKeys)) {
+                        $result = false;
+                        break;
+                    }
+                }
+            }
+        }
+        else {
+            $result = false;
+        }
+
+        return $result;
     }
 }
