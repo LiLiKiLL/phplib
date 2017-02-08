@@ -11,7 +11,7 @@ class Lib {
      * @return string          随机字符串
      */
     public static function createNonceStr($length = 16, $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') {
-        $str = "";
+        $str = '';
         for ($i = 0; $i < $length; $i++) {
             $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
         }
@@ -39,7 +39,7 @@ class Lib {
     }
 
     /**
-     * 生成一个n位数的随机数字码
+     * 生成一个n位数的随机数字码,n<=11
      * @param  integer $figures 码位数
      * @return string           码,格式:01234567
      */
@@ -65,7 +65,7 @@ class Lib {
         $dateList = array();// 存储开始时间到结束时间的所有日期，日期格式：YYYY-MM-DD
         if ($startTimeStamp <= $endTimeStamp) {
             $startTimeDate = date('Y-m-d', $startTimeStamp);
-            $endTimeDate = date('Y-m-d', $endTimeDate);
+            $endTimeDate = date('Y-m-d', $endTimeStamp);
             $tmpDate = $startTimeDate;
             while (strtotime($tmpDate) <= $endTimeStamp) {
                 $dateList[] = $tmpDate;
@@ -109,6 +109,15 @@ class Lib {
         }
         else {
             $result = false;
+        }
+
+        return $result;
+    }
+
+    public static function arrayRebuild($data, $keyKeyName, $valueKeyName) {
+        $result = array();
+        foreach ($data as $k => $v) {
+            $result[$v[$keyKeyName]][] = $v[$valueKeyName];
         }
 
         return $result;
