@@ -114,6 +114,13 @@ class Lib {
         return $result;
     }
 
+    /**
+     * 将二维数组重构为一维数组
+     * @param  array $data         要重构的数组
+     * @param  string $keyKeyName   作为键的键名
+     * @param  string $valueKeyName 作为值的键名
+     * @return array               处理后的一维键=>值数组
+     */
     public static function arrayRebuild($data, $keyKeyName, $valueKeyName) {
         $result = array();
         foreach ($data as $k => $v) {
@@ -121,5 +128,31 @@ class Lib {
         }
 
         return $result;
+    }
+
+    /**
+     * 将手机号的中间四位以马赛克字符代替
+     * @param  string $phone   手机号码
+     * @param  string $replace 替换字符-4位
+     * @return string          替换后的手机号
+     */
+    public static function phoneMosaic($phone, $replace = '****') {
+        $newPhone = substr_replace($phone, $replace, 3, 4);
+
+        return $newPhone;
+    }
+
+    /**
+     * 显示文章的简要信息，例如只显示文章的前140个字符作为链接，其余内容用省略号表示
+     * @param  string  $content  要简明显示的内容
+     * @param  string  $replace  省略替代符
+     * @param  integer $length   显示字符数
+     * @param  string  $encoding 字符编码
+     * @return string            处理后的字符串
+     */
+    public static function contentBreif($content, $replace = '...', $length = 140, $encoding = 'UTF-8') {
+        $newContent = mb_substr($content, 0, $length, $encoding) . $replace;
+
+        return $newContent;
     }
 }
