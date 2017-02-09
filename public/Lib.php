@@ -150,9 +150,37 @@ class Lib {
      * @param  string  $encoding 字符编码
      * @return string            处理后的字符串
      */
-    public static function contentBreif($content, $replace = '...', $length = 140, $encoding = 'UTF-8') {
+    public static function contentBreif($content, $replace = '...', $length = 140, $encoding = 'utf-8') {
         $newContent = mb_substr($content, 0, $length, $encoding) . $replace;
 
         return $newContent;
+    }
+
+    /**
+     * 反念句子，针对英文，中文不适用
+     * @param  string $sentence  [description]
+     * @param  string $delimiter 不可为空字符串，为空explode返回false
+     * @return string            [description]
+     */
+    public static function enSentenceReverse($sentence, $delimiter = ' ') {
+        $newSentence = implode($delimiter, array_reverse(explode($delimiter, $sentence)));
+
+        return $newSentence;
+    }
+
+    /**
+     * 反念句子，各种编码都适用
+     * @param  string $sentence [description]
+     * @param  string $encoding 字符编码
+     * @return string           [description]
+     */
+    public static function sentenceReverse($sentence, $encoding = 'utf-8') {
+        $len = mb_strlen($sentence, $encoding);
+        for ($i = 0; $i < $len; $i++) {
+            $arr[] = mb_substr($sentence, $i, 1, 'utf-8');
+        }
+        $newSentence = implode('', array_reverse($arr));
+
+        return $newSentence;
     }
 }

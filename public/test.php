@@ -93,6 +93,13 @@ HEREDOC;
         $newContent = Lib::contentBreif($content, '...', 10);
         echo $newContent;
     }
+
+    public static function sentenceReverse() {
+        // $sentence = 'Sometimes one pays most for the things one gets for nothing.';
+        $sentence = '有时候一个人为不花钱得到的东西付出的代价最高。';
+        $newSentence = Lib::sentenceReverse($sentence);
+        echo $newSentence;
+    }
 }
 
 // Test::createNonceStr();
@@ -102,4 +109,5 @@ HEREDOC;
 // Test::jsonParamValidate();
 // Test::arrayRebuild();
 // Test::phoneMosaic();
-Test::contentBreif();
+// Test::contentBreif();
+Test::sentenceReverse();
