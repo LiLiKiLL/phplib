@@ -100,6 +100,18 @@ HEREDOC;
         $newSentence = Lib::sentenceReverse($sentence);
         echo $newSentence;
     }
+
+    public static function tabToSpace() {
+        $str = <<<HEREDOC
+		床前明月光，		
+		疑似地上霜。		
+		举头望明月，		
+		低头思故乡。		
+HEREDOC;
+		$content = [$str, $str];
+        $newContent = Lib::tabToSpace($content);
+        print_r($newContent);
+    }
 }
 
 // Test::createNonceStr();
@@ -110,4 +122,5 @@ HEREDOC;
 // Test::arrayRebuild();
 // Test::phoneMosaic();
 // Test::contentBreif();
-Test::sentenceReverse();
+// Test::sentenceReverse();
+Test::tabToSpace();

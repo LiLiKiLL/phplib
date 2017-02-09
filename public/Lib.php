@@ -183,4 +183,21 @@ class Lib {
 
         return $newSentence;
     }
+
+    /**
+     * 将制表符转换为空格
+     * @param  mixed  $content  可以是字符串或数组
+     * @param  integer $tabSpace 一个制表符代表的空格数
+     * @return mixed            [description]
+     */
+    public static function tabToSpace($content, $tabSpace = 4) {
+        $pattern = '/[\t]/';
+        $replace = str_repeat(' ', $tabSpace);
+        // 使用正则替换，可以转换数组
+        $newContent = preg_replace($pattern, $replace, $content);
+        // 使用字符串替换，只支持字符串
+        // $newContent = str_replace("\t", $replace, $content);
+
+        return $newContent;
+    }
 }
