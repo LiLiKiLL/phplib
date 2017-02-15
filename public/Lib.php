@@ -232,6 +232,28 @@ class Lib {
     }
 
     /**
+     * 枚举某个日期的该星期所有日期，下标0开始，周日为第一天
+     * @param  string $date YYYY-MM-DD [HH:II:SS]格式的日期，不传则为当前日期
+     * @return array       以星期（0-6，0为星期日）为下标的，日期为值的数组
+     */
+    public static function weekDate($date = '') {
+        $date = empty($date) ? date('Y-m-d H:i:s') : $date;
+        // 获取该日期的星期
+        $timestamp = strtotime($date);
+        $weekDay = strftime('%w', $timestamp);// 0-6，0表示星期日
+        // 得到本周第一天的时间戳，周日为第一天
+        $startDay = $timestamp - (86400 * $weekDay);
+        $weekDate = array();
+        for ($i = 0;$i < 7; $i++) {
+            $weekDate[$i] = date('Y-m-d', $startDay + 86400 * $i);
+        }
+
+        return $weekDate;
+    }
+
+    // public static function monthDate
+
+    /**
      * 计算一个人的年龄，精确到天
      * @param  [type] $birthDate [description]
      * @return [type]            [description]

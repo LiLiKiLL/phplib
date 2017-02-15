@@ -133,6 +133,14 @@ HEREDOC;
         $id = Lib::getUniqueId();
         echo $id;
     }
+
+    public static function weekDate() {
+        $date = date('Y-m-d H:i:s');
+        $date = '2017-01-05';
+        $weekDate = Lib::weekDate();
+
+        print_r($weekDate);
+    }
 }
 
 // http://localhost/www_cx/phplib/public/test.php
@@ -154,4 +162,5 @@ HEREDOC;
 // $g = strtotime("$birthday -9 months ago");
 // echo $g;
 // Test::runtime();
-Test::getUniqueId();
+// Test::getUniqueId();
+Test::weekDate();
