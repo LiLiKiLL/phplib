@@ -141,6 +141,14 @@ HEREDOC;
 
         print_r($weekDate);
     }
+
+    public static function monthDate() {
+        $date = date('Y-m-d H:i:s');
+        $date = '1993-09-09';
+        $monthDate = Lib::monthDate($date);
+
+        print_r($monthDate);
+    }
 }
 
 // http://localhost/www_cx/phplib/public/test.php
@@ -163,4 +171,5 @@ HEREDOC;
 // echo $g;
 // Test::runtime();
 // Test::getUniqueId();
-Test::weekDate();
+// Test::weekDate();
+Test::monthDate();

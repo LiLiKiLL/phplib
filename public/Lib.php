@@ -239,10 +239,10 @@ class Lib {
     public static function weekDate($date = '') {
         $date = empty($date) ? date('Y-m-d H:i:s') : $date;
         // 获取该日期的星期
-        $timestamp = strtotime($date);
-        $weekDay = strftime('%w', $timestamp);// 0-6，0表示星期日
+        $time = strtotime($date);
+        $weekDay = strftime('%w', $time);// 0-6，0表示星期日
         // 得到本周第一天的时间戳，周日为第一天
-        $startDay = $timestamp - (86400 * $weekDay);
+        $startDay = $time - (86400 * $weekDay);
         $weekDate = array();
         for ($i = 0;$i < 7; $i++) {
             $weekDate[$i] = date('Y-m-d', $startDay + 86400 * $i);
@@ -251,7 +251,30 @@ class Lib {
         return $weekDate;
     }
 
-    // public static function monthDate
+    /**
+     * 枚举某个日期所在月的每一天
+     * @param  string $date YYYY-MM-DD [HH:II:SS]格式的日期
+     * @return array       该月日期枚举数组
+     */
+    public static function monthDate($date = '') {
+        $date = empty($date) ? date('Y-m-d H:i:s') : $date;
+        // 获取该日期是几月
+        $time = strtotime($date);
+        $month = strftime('%m', $time);// 01-12
+        $year = strftime('%Y', $time);// YYYY
+        // 获取本月第一天午夜的Unix时间戳
+        $monthStart = mktime(0, 0, 0, $month, 1, $year);
+        // 获取下月第一天午夜的Unix时间戳
+        $monthEnd = mktime(0, 0, 0, $month + 1, 1, $year);
+        $day = $monthStart;
+        $monthDate = array();
+        while ($day < $monthEnd) {
+            $monthDate[] = date('Y-m-d', $day);
+            $day += 86400;
+        }
+
+        return $monthDate;
+    }
 
     /**
      * 计算一个人的年龄，精确到天
