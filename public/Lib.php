@@ -200,4 +200,46 @@ class Lib {
 
         return $newContent;
     }
+
+    /**
+     * 获取YYYY-MM-DD HH:II:SS格式的所有日期时间
+     * @param  [type] $date [description]
+     * @return [type]       [description]
+     */
+    public static function getDateParts($date) {
+        preg_match('/(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})/', $date, $dateParts);
+        // 使用substr函数
+        // $dateParts[0] = $date;
+        // $dateParts[1] = substr($date, 0, 4);
+        // $dateParts[2] = substr($date, 5, 2);
+        // $dateParts[3] = substr($date, 8, 2);
+        // $dateParts[4] = substr($date, 11, 2);
+        // $dateParts[5] = substr($date, 14, 2);
+        // $dateParts[6] = substr($date, 17, 2);
+
+        return $dateParts;
+    }
+
+    /**
+     * 根据Unix微秒时间戳和进程ID生成唯一ID（不可靠，有极小或不等于零的概率下同一进程会在同一微秒内调用microtime()）
+     * @return [type] [description]
+     */
+    public static function getUniqueId() {
+        list($microSeconds, $seconds) = explode(' ', microtime());
+        $id = $seconds.$microSeconds.getmypid();
+
+        return $id;
+    }
+
+    /**
+     * 计算一个人的年龄，精确到天
+     * @param  [type] $birthDate [description]
+     * @return [type]            [description]
+     */
+    public static function age($birthDate) {
+        // 计算出生天数
+        $now = getdate();
+        // $n
+        $birthDate = getdate(strtotime($birthDate));
+    }
 }

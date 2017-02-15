@@ -112,7 +112,30 @@ HEREDOC;
         $newContent = Lib::tabToSpace($content);
         print_r($newContent);
     }
+
+    public static function getDateParts() {
+        $date = date('Y-m-d H:i:s');
+        $dateParts = Lib::getDateParts($date);
+        print_r($dateParts);
+    }
+
+    public static function runtime() {
+        $start = microtime(true);
+        for ($i = 0;$i < 1000;$i++) {
+            preg_match('/age=\d+/', $_SERVER['QUERY_STRING']);
+        }
+        $end = microtime(true);
+
+        echo $end - $start;
+    }
+
+    public static function getUniqueId() {
+        $id = Lib::getUniqueId();
+        echo $id;
+    }
 }
+
+// http://localhost/www_cx/phplib/public/test.php
 
 // Test::createNonceStr();
 // Test::curPageUrl();
@@ -123,4 +146,12 @@ HEREDOC;
 // Test::phoneMosaic();
 // Test::contentBreif();
 // Test::sentenceReverse();
-Test::tabToSpace();
+// Test::tabToSpace();
+// echo strtotime('1969-01-01 00:00:00');// -31536000
+// echo date('Y-m-d H:i:s', -31536000);
+// Test::getDateParts();
+// $birthday = 'March 10, 1975';
+// $g = strtotime("$birthday -9 months ago");
+// echo $g;
+// Test::runtime();
+Test::getUniqueId();
