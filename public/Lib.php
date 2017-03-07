@@ -283,8 +283,21 @@ class Lib {
      */
     public static function age($birthDate) {
         // 计算出生天数
-        $now = getdate();
-        // $n
-        $birthDate = getdate(strtotime($birthDate));
+        $now = time();
+        $nowYear = strftime('%Y', $now);
+        $birthTime = strtotime($birthDate);
+        $birthYear = strftime('%Y', $birthTime);
+
+        $second = $now - $birthTime;// 出生到现在秒数 = 现在时间戳 - 生日时间戳
+        $minute = ceil($second / 60);// 出生到现在分钟数
+        $hour = ceil($second / 3600);// 出生到现在小时数
+        $day = ceil($second / 86400);// 出生到现在天数
+        $year = $nowYear - $birthYear;// 岁数 = 现在年份 - 出生年份
+
+        // 具体到年月日时分秒
+        
+
+
+        return $age;
     }
 }

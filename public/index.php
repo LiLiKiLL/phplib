@@ -1,3 +1,2 @@
 <?php
-// phpinfo();
-echo "yes";
+echo php_uname();

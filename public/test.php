@@ -149,6 +149,14 @@ HEREDOC;
 
         print_r($monthDate);
     }
+
+    public static function age() {
+        $birthDate = '1993-09-09';
+        $birthDate = '1993-10-23';
+        $age = Lib::age($birthDate);
+
+        print_r($age);
+    }
 }
 
 // http://localhost/www_cx/phplib/public/test.php
@@ -173,4 +181,4 @@ HEREDOC;
 // Test::getUniqueId();
 // Test::weekDate();
 // Test::monthDate();
-
+Test::age();
