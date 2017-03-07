@@ -119,16 +119,6 @@ HEREDOC;
         print_r($dateParts);
     }
 
-    public static function runtime() {
-        $start = microtime(true);
-        for ($i = 0;$i < 1000;$i++) {
-            preg_match('/age=\d+/', $_SERVER['QUERY_STRING']);
-        }
-        $end = microtime(true);
-
-        echo $end - $start;
-    }
-
     public static function getUniqueId() {
         $id = Lib::getUniqueId();
         echo $id;
@@ -157,6 +147,10 @@ HEREDOC;
 
         print_r($age);
     }
+
+    public static function runTime() {
+        Lib::runTime();
+    }
 }
 
 // http://localhost/www_cx/phplib/public/test.php
@@ -181,4 +175,5 @@ HEREDOC;
 // Test::getUniqueId();
 // Test::weekDate();
 // Test::monthDate();
-Test::age();
+// Test::age();
+Test::runTime();

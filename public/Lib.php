@@ -300,4 +300,15 @@ class Lib {
 
         return $age;
     }
+
+    public static function runTime() {
+        $t1 = microtime(true);
+        // ... 执行代码 ...
+        for ($i = 1; $i <= 100000; $i++) {
+            $str = md5('abcde');
+        }
+        $t2 = microtime(true);
+        $t = round($t2 - $t1, 3);
+        echo '耗时'. $t .'秒';
+    }
 }
