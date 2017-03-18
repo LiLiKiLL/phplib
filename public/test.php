@@ -151,9 +151,23 @@ HEREDOC;
     public static function runTime() {
         Lib::runTime();
     }
+
+    public static function getDesc() {
+        $data = [
+            'id' => 1,
+            'name' => '测试',
+            'status' => 1,
+        ];
+        $descMap = [
+            1 => '正常',
+            2 => '已删除',
+        ];
+        Lib::getDesc($data, 'status', $descMap);
+        print_r($data);
+    }
 }
 
-// http://localhost/www_cx/phplib/public/test.php
+
 
 // Test::createNonceStr();
 // Test::curPageUrl();
@@ -176,4 +190,8 @@ HEREDOC;
 // Test::weekDate();
 // Test::monthDate();
 // Test::age();
-Test::runTime();
+// Test::runTime();
+Test::getDesc();
+
+
+// http://localhost/www_cx/phplib/public/test.php

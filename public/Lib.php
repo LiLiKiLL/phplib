@@ -311,4 +311,22 @@ class Lib {
         $t = round($t2 - $t1, 3);
         echo '耗时'. $t .'秒';
     }
+
+    /**
+     * 将数据库中的数字表示的字段，添加一个中文描述字段，方便debug和查看接口信息
+     * 比如：数据库中status字段用1表示正常，2表示已删除，则可以通过本函数，给数据添加一个status_desc的中文描述字段
+     * 原$data ：['status' => 1]
+     * 处理后$data：['status' => 1, 'status_desc' => '正常']
+     * 调用示例：Lib::getDesc(['status' => 1], 'status', [1 => '正常', 2 => '已删除'])
+     * @param  array &$data      要转换的数据
+     * @param  string $originKey  要添加中文描述的原始key
+     * @param  array $descMap    数字描述map数组
+     * @return [type]             若$data中不存在$originKey字段，则返回原$data，若$descMap不存在$orginKey对应值的Map，则返回描述值为空字符串
+     */
+    public static function getDesc(&$data, $originKey, $descMap) {
+        $newDescKey = $originKey . '_desc';
+        if (isset($data[$originKey])) {
+            $data[$newDescKey] = isset($descMap[$data[$originKey]]) ? $descMap[$data[$originKey]] : '';
+        }
+    }
 }
