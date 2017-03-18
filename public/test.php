@@ -165,6 +165,17 @@ HEREDOC;
         Lib::getDesc($data, 'status', $descMap);
         print_r($data);
     }
+
+    public static function timestampsFormat() {
+        $data = [
+            'create_at' => 1489849359,
+            'update_at' => 1489849359,
+            'start_time' => 1489849359,
+            'end_time' => 1489849359,
+        ];
+        Lib::timestampsFormat($data);
+        print_r($data);
+    }
 }
 
 
@@ -191,7 +202,8 @@ HEREDOC;
 // Test::monthDate();
 // Test::age();
 // Test::runTime();
-Test::getDesc();
+// Test::getDesc();
+Test::timestampsFormat();
 
 
 // http://localhost/www_cx/phplib/public/test.php

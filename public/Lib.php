@@ -329,4 +329,20 @@ class Lib {
             $data[$newDescKey] = isset($descMap[$data[$originKey]]) ? $descMap[$data[$originKey]] : '';
         }
     }
+
+    /**
+     * 格式化时间戳
+     * 调用示例：Lib::timestampFormat(['create_at' => 1122991787, 'update_at' => 126767899], ['create_at', 'update_at'], 'Y-m-d H:i:s')
+     * @param  array &$data      要格式化的数据
+     * @param  array $keys       要格式化的字段
+     * @param  string $format    格式
+     * @return [type]             [description]
+     */
+    public static function timestampsFormat(&$data, $keys = ['create_at', 'update_at', 'start_time', 'end_time'], $format = 'Y-m-d H:i:s') {
+        foreach ($keys as $key) {
+            if (isset($data[$key])) {
+                $data[$key] = date($format, $data[$key]);
+            }
+        }
+    }
 }
