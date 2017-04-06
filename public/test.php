@@ -1,29 +1,26 @@
 <?php
-namespace phplib;
-
-use phplib\Lib as Lib;
 include "Lib.php";
 
 class Test {
     public static function createNonceStr() {
-        $str = Lib::createNonceStr(8);
+        $str = createNonceStr(8);
         echo $str;
     }
 
     public static function curPageUrl() {
-        $url = Lib::curPageUrl();
+        $url = curPageUrl();
         echo $url;
     }
 
     public static function generateIntergerCode() {
-        $code = Lib::generateIntergerCode(11);
+        $code = generateIntergerCode(11);
         echo $code;
     }
 
     public static function getDateListOfPeriod() {
         $startDate = '2017-01-01';
         $endDate = '2017-01-31';
-        $period = Lib::getDateListOfPeriod($startDate, $endDate);
+        $period = getDateListOfPeriod($startDate, $endDate);
         var_export($period);
     }
 
@@ -38,7 +35,7 @@ HEREDOC;
 
         $requiredKeys = ['position', 'count_ry', 'count_mall', 'fee'];
 
-        $result = Lib::jsonParamValidate($param, $requiredKeys, 1);
+        $result = jsonParamValidate($param, $requiredKeys, 1);
 
         var_dump($result);
     }
@@ -74,13 +71,13 @@ HEREDOC;
                 'name' => 'beans',
             ],
         ];
-        $arrMap = Lib::arrayRebuild($arr, 'type', 'name');
+        $arrMap = arrayRebuild($arr, 'type', 'name');
         var_export($arrMap);
     }
 
     public static function phoneMosaic() {
         $phone = '15062658814';
-        $newPhone = Lib::phoneMosaic($phone);
+        $newPhone = phoneMosaic($phone);
         echo $newPhone;
     }
 
@@ -90,14 +87,14 @@ HEREDOC;
 
 这真是个最好的年代，千里马无须苦等伯乐，总有合适的平台让他们一鸣惊人。但这也是个充满悲剧色彩的年代，技术会把事物最美好的一面推送到我们面前，直到它不再美好，而悲剧不正是“把美好的事物毁灭给人看”吗？这还是个逻辑混乱的年代，我们的赵雷不管是成为下一个肥肥的晓松，或者是下一个“占据中国乐坛半壁江山”的汪峰，都有着看似不错的未来，而我们的武姑娘，不管是成为下一个咪蒙，还是下一个章泽天，好像都很惨。
 HEREDOC;
-        $newContent = Lib::contentBreif($content, '...', 10);
+        $newContent = contentBreif($content, '...', 10);
         echo $newContent;
     }
 
     public static function sentenceReverse() {
         // $sentence = 'Sometimes one pays most for the things one gets for nothing.';
         $sentence = '有时候一个人为不花钱得到的东西付出的代价最高。';
-        $newSentence = Lib::sentenceReverse($sentence);
+        $newSentence = sentenceReverse($sentence);
         echo $newSentence;
     }
 
@@ -109,25 +106,25 @@ HEREDOC;
 		低头思故乡。		
 HEREDOC;
 		$content = [$str, $str];
-        $newContent = Lib::tabToSpace($content);
+        $newContent = tabToSpace($content);
         print_r($newContent);
     }
 
     public static function getDateParts() {
         $date = date('Y-m-d H:i:s');
-        $dateParts = Lib::getDateParts($date);
+        $dateParts = getDateParts($date);
         print_r($dateParts);
     }
 
     public static function getUniqueId() {
-        $id = Lib::getUniqueId();
+        $id = getUniqueId();
         echo $id;
     }
 
     public static function weekDate() {
         $date = date('Y-m-d H:i:s');
         $date = '2017-01-05';
-        $weekDate = Lib::weekDate();
+        $weekDate = weekDate();
 
         print_r($weekDate);
     }
@@ -135,7 +132,7 @@ HEREDOC;
     public static function monthDate() {
         $date = date('Y-m-d H:i:s');
         $date = '1993-09-09';
-        $monthDate = Lib::monthDate($date);
+        $monthDate = monthDate($date);
 
         print_r($monthDate);
     }
@@ -143,13 +140,13 @@ HEREDOC;
     public static function age() {
         $birthDate = '1993-09-09';
         $birthDate = '1993-10-23';
-        $age = Lib::age($birthDate);
+        $age = age($birthDate);
 
         print_r($age);
     }
 
     public static function runTime() {
-        Lib::runTime();
+        runTime();
     }
 
     public static function getDesc() {
@@ -162,7 +159,7 @@ HEREDOC;
             1 => '正常',
             2 => '已删除',
         ];
-        Lib::getDesc($data, 'status', $descMap);
+        getDesc($data, 'status', $descMap);
         print_r($data);
     }
 
@@ -173,8 +170,22 @@ HEREDOC;
             'start_time' => 1489849359,
             'end_time' => 1489849359,
         ];
-        Lib::timestampsFormat($data);
+        timestampsFormat($data);
         print_r($data);
+    }
+
+    public static function assignArrayDefault() {
+        $default = [
+            'name' => 'chenxu',
+            'age' => 18,
+            'sex' => 'male',
+        ];
+        $array = [
+            'name' => 'anyo',
+        ];
+        $array = assignArrayDefault($array, $default);
+
+        print_r($array);
     }
 }
 
@@ -203,7 +214,10 @@ HEREDOC;
 // Test::age();
 // Test::runTime();
 // Test::getDesc();
-Test::timestampsFormat();
-
-
+// Test::timestampsFormat();
+// $lc = array('a', 'b' => 'b');// 值为小写字母
+// $uc = array('A', 'b' => 'B');// 值为大写字母
+// print_r($lc + $uc);
+// print_r($uc + $lc);
+Test::assignArrayDefault();
 // http://localhost/www_cx/phplib/public/test.php
