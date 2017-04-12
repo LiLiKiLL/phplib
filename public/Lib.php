@@ -33,6 +33,18 @@ function curPageUrl() {
 }
 
 /**
+ * 获取请求当前接口的url
+ * @return [type] [description]
+ */
+function getRequestUrl()
+{
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $url = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+    return $url;
+}
+
+/**
  * 生成一个n位数的随机数字码,n<=11
  * @param  integer $figures 码位数
  * @return string           码,格式:01234567

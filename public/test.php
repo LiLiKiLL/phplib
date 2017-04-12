@@ -100,10 +100,10 @@ HEREDOC;
 
     public static function tabToSpace() {
         $str = <<<HEREDOC
-		床前明月光，		
-		疑似地上霜。		
-		举头望明月，		
-		低头思故乡。		
+		床前明月光，
+		疑似地上霜。
+		举头望明月，
+		低头思故乡。
 HEREDOC;
 		$content = [$str, $str];
         $newContent = tabToSpace($content);
@@ -187,6 +187,11 @@ HEREDOC;
 
         print_r($array);
     }
+
+    public static function getRequestUrl()
+    {
+        echo getRequestUrl();
+    }
 }
 
 
@@ -219,5 +224,6 @@ HEREDOC;
 // $uc = array('A', 'b' => 'B');// 值为大写字母
 // print_r($lc + $uc);
 // print_r($uc + $lc);
-Test::assignArrayDefault();
+// Test::assignArrayDefault();
+Test::getRequestUrl();
 // http://localhost/www_cx/phplib/public/test.php
