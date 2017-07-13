@@ -375,7 +375,7 @@ function assignArrayDefault($array, $default) {
  * 对应的小写：y-d h:i:s，则返回不带0的值
  * @return [type] [description]
  */
-function sec2time($time, $format = 'Y-D H:I:S')
+function sec2time($time, $format = 'Y年D日 H时I分S秒')
 {
     $y = $d = $h = $i = $s = '0';
     $Y = $D = $H = $I = $S = '00';
