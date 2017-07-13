@@ -192,6 +192,11 @@ HEREDOC;
     {
         echo getRequestUrl();
     }
+
+    public static function sec2time()
+    {
+        echo sec2time(88);
+    }
 }
 
 
@@ -225,5 +230,15 @@ HEREDOC;
 // print_r($lc + $uc);
 // print_r($uc + $lc);
 // Test::assignArrayDefault();
-Test::getRequestUrl();
+// Test::getRequestUrl();
+// $str = <<<HEREDOC
+// {"meta":{"errno":0,"msg":""},"result":{"imgUrl":["http:\/\/img0.t.rongyi.com\/309caa62dfc304600cff3f5f2b26711a.jpg"]}}
+// HEREDOC;
+
+// var_dump(json_decode($str, true));
+// echo strtotime(date('Y-m-d 23:00:00'));
+// echo PHP_EOL;
+// echo strtotime(date('Y-m-d 09:00:00'));
+// echo date('20170321',1493024444);
 // http://localhost/www_cx/phplib/public/test.php
+Test::sec2time();

@@ -368,3 +368,42 @@ function assignArrayDefault($array, $default) {
 
     return $result;
 }
+
+/**
+ * 倒计时秒数转换为年-日 时:分:秒，注意没有月份
+ * 格式化参数：Y-D H:I:S，返回带前导0的两位数字
+ * 对应的小写：y-d h:i:s，则返回不带0的值
+ * @return [type] [description]
+ */
+function sec2time($time, $format = 'Y-D H:I:S')
+{
+    $y = $d = $h = $i = $s = '0';
+    $Y = $D = $H = $I = $S = '00';
+    if($time >= 31556926){
+        $y = floor($time / 31556926);
+        $Y = str_pad($y, 2, '0', STR_PAD_LEFT);
+        $time = $time % 31556926;
+    }
+    if($time >= 86400){
+        $d = floor($time / 86400);
+        $D = str_pad($d, 2, '0', STR_PAD_LEFT);
+        $time = $time % 86400;
+    }
+    if($time >= 3600){
+        $h = floor($time/3600);
+        $H = str_pad($h, 2, '0', STR_PAD_LEFT);
+        $time = $time % 3600;
+    }
+    if($time >= 60){
+        $i = floor($time/60);
+        $I = str_pad($i, 2, '0', STR_PAD_LEFT);
+        $time = $time % 60;
+    }
+    $s = floor($time);
+    $S = str_pad($s, 2, '0', STR_PAD_LEFT);
+    $pattern = ['/Y/', '/y/', '/D/', '/d/', '/H/', '/h/', '/I/', '/i/', '/S/', '/s/'];
+    $replacement = [$Y, $y, $D, $d, $H, $h, $I, $i, $S, $s];
+    $countdownStr = preg_replace($pattern, $replacement, $format);
+
+    return $countdownStr;
+ }
