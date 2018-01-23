@@ -12,8 +12,8 @@ class Test {
         echo $url;
     }
 
-    public static function generateIntergerCode() {
-        $code = generateIntergerCode(11);
+    public static function generateIntegerCode() {
+        $code = generateIntegerCode(11);
         echo $code;
     }
 
@@ -203,7 +203,7 @@ HEREDOC;
 
 // Test::createNonceStr();
 // Test::curPageUrl();
-// Test::generateIntergerCode();
+// Test::generateIntegerCode();
 // Test::getDateListOfPeriod();
 // Test::jsonParamValidate();
 // Test::arrayRebuild();

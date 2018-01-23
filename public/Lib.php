@@ -49,12 +49,12 @@ function getRequestUrl()
  * @param  integer $figures 码位数
  * @return string           码,格式:01234567
  */
-function generateIntergerCode($figures = 8) {
+function generateIntegerCode($figures = 8) {
     $code = '';
     $minNum = 1;
     $maxNum = pow(10, (int)$figures) - 1;
     $code = mt_rand($minNum, $maxNum);
-    $code = str_pad($code, $figures, '0', STR_PAD_LEFT);// 不够8位左边补齐0
+    $code = str_pad($code, $figures, '0', STR_PAD_LEFT);// 不够位数左边补齐0
 
     return $code;
 }
